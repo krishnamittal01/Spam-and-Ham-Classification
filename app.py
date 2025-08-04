@@ -1,9 +1,37 @@
+import nltk
+import os
+import ssl
+
+# Streamlit sometimes needs this fix for SSL
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+# Download only if not already present
+nltk.download('punkt')
+nltk.download('stopwords')  # If you're using stopwords
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+
+
+
+
+
+
 import streamlit as st
 import pickle
 import nltk
 import string
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+import nltk
+nltk.download('punkt')  # <-- Add this line
+from nltk.tokenize import word_tokenize
+
 
 nltk.download('punkt')
 nltk.download('stopwords')
